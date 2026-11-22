@@ -1,8 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220%22%3E<text y=%2226%22 font-size=%2226%22>📊</text></svg>" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var isDark =
+            stored === "dark" ||
+            (!stored &&
+              window.matchMedia &&
+              window.matchMedia("(prefers-color-scheme: dark)").matches);
+          if (isDark) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+          var meta = document.querySelector('meta[name="color-scheme"]');
+          if (meta) {
+            meta.content =
+              stored === "light" || stored === "dark" ? stored : "light dark";
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2224%22 height=%2224%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%232563eb%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22M3 3v18h18%22/><path d=%22M18 17V9%22/><path d=%22M13 17V5%22/><path d=%22M8 17v-3%22/></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Error Log Grouper</title>
   </head>

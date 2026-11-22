@@ -1,4 +1,5 @@
 import React, { useState, useMemo } from "react";
+import { ArrowUpDown, ArrowUp, ArrowDown, ArrowRight } from "lucide-react";
 
 export default function SummaryTable({
   summary = [],
@@ -52,15 +53,32 @@ export default function SummaryTable({
   }, [summary, sortCol, sortDir]);
 
   const renderSortIndicator = (col) => {
-    if (sortCol !== col) return <span className="sort-indicator neutral">⇅</span>;
-    return <span className="sort-indicator active">{sortDir === "asc" ? "▲" : "▼"}</span>;
+    if (sortCol !== col) {
+      return (
+        <span className="sort-indicator neutral" style={{ display: "inline-flex", alignItems: "center" }}>
+          <ArrowUpDown size={12} strokeWidth={2} />
+        </span>
+      );
+    }
+    return (
+      <span className="sort-indicator active" style={{ display: "inline-flex", alignItems: "center" }}>
+        {sortDir === "asc" ? (
+          <ArrowUp size={12} strokeWidth={2} />
+        ) : (
+          <ArrowDown size={12} strokeWidth={2} />
+        )}
+      </span>
+    );
   };
 
   return (
     <div className="card summary-card">
       <div className="table-header-title">
         <h3>Grouped Error Summary</h3>
-        <span className="table-instruction">Click any row to view error drill-down & details</span>
+        <span className="table-instruction" style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}>
+          <span>Click any row to open the full drill-down page</span>
+          <ArrowRight size={14} strokeWidth={2} />
+        </span>
       </div>
 
       <div className="table-responsive">
@@ -159,7 +177,7 @@ export default function SummaryTable({
 
       <div className="table-footer">
         Showing {sortedSummary.length} of {distinct || sortedSummary.length} groups ·{" "}
-        {total.toLocaleString()} total rows. Click a row to drill down.
+        {total.toLocaleString()} total rows. Click a row to open its drill-down page.
       </div>
     </div>
   );
