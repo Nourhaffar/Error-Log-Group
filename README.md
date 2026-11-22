@@ -188,7 +188,7 @@ The backend parser and grouping logic reside in `server/grouper.js`:
 
 ```
 error-grouper/
-├── .env.example          # Environment variable template (ASANA_PAT, ASANA_WORKSPACE, PORT)
+├── .env                  # Environment variable template (ASANA_PAT, ASANA_WORKSPACE, PORT)
 ├── server/
 │   ├── package.json      # Express, Multer, SheetJS, CORS
 │   ├── index.js          # Express app + /api routes + static file fallback
