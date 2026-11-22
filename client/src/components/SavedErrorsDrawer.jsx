@@ -9,6 +9,7 @@ import {
   Download,
   Trash2,
   Plus,
+  RotateCw,
 } from "lucide-react";
 import AssignDialog from "./AssignDialog.jsx";
 import { getAssignedErrors, markErrorAssigned } from "../db.js";
@@ -122,47 +123,38 @@ export default function SavedErrorsDrawer({
                       <span className="saved-item-index">#{index + 1}</span>
                       <div className="saved-card-actions">
                         {isAssigned && (
-                          <span className="saved-assigned-status">
-                            <a
-                              href={taskInfo.permalink_url}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="assigned-link"
-                              title="Open task in Asana"
-                              style={{ display: "inline-flex", alignItems: "center", gap: "4px" }}
-                            >
-                              <Check size={14} strokeWidth={2} />
-                              <span>Opened in Asana</span>
-                              <ExternalLink size={12} strokeWidth={2} style={{ marginInlineStart: 2 }} />
-                            </a>
-                            <button
-                              type="button"
-                              className="reassign-btn"
-                              onClick={() => setAssignTarget(item)}
-                              title="Reassign task"
-                            >
-                              Reassign
-                            </button>
-                          </span>
+                          <a
+                            href={taskInfo.permalink_url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="saved-action-btn saved-asana-btn"
+                            title="Open task in Asana"
+                            aria-label="Open task in Asana"
+                          >
+                            <ExternalLink size={14} strokeWidth={2} />
+                          </a>
                         )}
                         <button
                           type="button"
-                          className="btn btn-secondary saved-assign-btn"
+                          className="saved-action-btn saved-assign-btn"
                           onClick={() => setAssignTarget(item)}
-                          disabled={isAssigned}
-                          title={isAssigned ? "Task already assigned in Asana" : "Assign task in Asana"}
-                          aria-label="Assign task in Asana"
+                          title={isAssigned ? "Reassign task in Asana" : "Assign task in Asana"}
+                          aria-label={isAssigned ? "Reassign task in Asana" : "Assign task in Asana"}
                         >
-                          <Plus size={16} strokeWidth={2} />
+                          {isAssigned ? (
+                            <RotateCw size={14} strokeWidth={2} />
+                          ) : (
+                            <Plus size={15} strokeWidth={2} />
+                          )}
                         </button>
                         <button
                           type="button"
-                          className="saved-remove-btn"
+                          className="saved-action-btn saved-remove-btn"
                           onClick={() => onRemoveError(item.id)}
                           title="Remove from saved errors"
                           aria-label="Remove from saved errors"
                         >
-                          <Trash2 size={16} strokeWidth={2} />
+                          <Trash2 size={15} strokeWidth={2} />
                         </button>
                       </div>
                     </div>

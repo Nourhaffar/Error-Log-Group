@@ -1245,14 +1245,10 @@ body {
 .saved-card-actions {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
-.saved-assign-btn {
-  background-color: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: hsl(var(--primary));
-  cursor: pointer;
+.saved-action-btn {
   width: 28px;
   height: 28px;
   padding: 0;
@@ -1260,7 +1256,38 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  color: #64748b;
   transition: all 0.15s ease;
+  line-height: 1;
+  text-decoration: none;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.saved-action-btn:hover {
+  background-color: #f8fafc;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.saved-asana-btn {
+  background-color: #ecfdf5;
+  border-color: #a7f3d0;
+  color: #059669;
+}
+
+.saved-asana-btn:hover {
+  background-color: #d1fae5;
+  border-color: #6ee7b7;
+  color: #047857;
+}
+
+.saved-assign-btn {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: hsl(var(--primary));
 }
 
 .saved-assign-btn:hover:not(:disabled) {
@@ -1278,22 +1305,13 @@ body {
 }
 
 .saved-remove-btn {
-  background: transparent;
-  border: 1px solid transparent;
+  background-color: #fef2f2;
+  border-color: #fecaca;
   color: #ef4444;
-  cursor: pointer;
-  width: 28px;
-  height: 28px;
-  padding: 0;
-  border-radius: 6px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.15s ease;
 }
 
 .saved-remove-btn:hover {
-  background: #fee2e2;
+  background-color: #fee2e2;
   border-color: #fca5a5;
   color: #dc2626;
 }
@@ -2501,6 +2519,31 @@ html.dark .saved-item-index {
   color: #94a3b8;
 }
 
+html.dark .saved-action-btn {
+  background-color: #0f172a;
+  border-color: #1e293b;
+  color: #94a3b8;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+html.dark .saved-action-btn:hover {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #f1f5f9;
+}
+
+html.dark .saved-asana-btn {
+  background-color: #064e3b;
+  border-color: #059669;
+  color: #6ee7b7;
+}
+
+html.dark .saved-asana-btn:hover {
+  background-color: #047857;
+  border-color: #10b981;
+  color: #a7f3d0;
+}
+
 html.dark .saved-assign-btn {
   background-color: #172554;
   border-color: #1e3a8a;
@@ -2520,11 +2563,15 @@ html.dark .saved-assign-btn:disabled {
 }
 
 html.dark .saved-remove-btn {
-  color: #f87171;
+  background-color: #450a0a;
+  border-color: #7f1d1d;
+  color: #fca5a5;
 }
 
 html.dark .saved-remove-btn:hover {
-  background-color: #450a0a;
+  background-color: #7f1d1d;
+  border-color: #991b1b;
+  color: #fee2e2;
 }
 
 html.dark .saved-field-label {
